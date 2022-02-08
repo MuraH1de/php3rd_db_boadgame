@@ -39,6 +39,8 @@
     //echo $user_id.$user_table[$user_id]["user_name"].'<br />';
 
     $stop_status = $user_table[$user_id]["stop_status"];
+    $position = $user_table[$user_id]["position"];
+    //echo "stop_status->".$stop_status;
 ?>
 
 
@@ -95,7 +97,13 @@
                 <tr><th>マス</th><th>内容</th></tr>
                 <?php
                     for($i=0;$i<29;$i++){
-                        echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                        if($i == $position - 1){
+                            echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                        }
+                        else{
+                            echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                        }
+                        
                     }
                 ?>
 

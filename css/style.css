@@ -12,6 +12,11 @@ main{
     border-left: solid 1px #c9c9c9;
 }
 
+h2{
+    margin-top: 75px;
+}
+
+
 table {
     border-collapse: collapse;
     font-size: 65%;
@@ -20,4 +25,12 @@ table {
 table th, table td {
     border: solid 1px black;
 }
+.table_config{
+    background-color: #ff8c00;
+    font-weight: 800;
+}
 
+#s_result{
+    margin: 0 20px;
+    color: red;
+}

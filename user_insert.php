@@ -20,7 +20,7 @@
     //echo '<br />';
 
     // 1. SQL文を用意
-    $stmt = $pdo->prepare("INSERT INTO user_table(user_id, user_name, position, stop_status, goal)VALUES(NULL, :user_name, 1, 0, 29)");
+    $stmt = $pdo->prepare("INSERT INTO user_table(user_id, user_name, position, stop_status, goal)VALUES(NULL, :user_name, 1, 0, 28)");
 
     //  2. バインド変数を用意
     $stmt->bindValue(':user_name', $name, PDO:: PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)

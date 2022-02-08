@@ -45,7 +45,7 @@
     //何ターン目か確認
     $turn = intdiv($count_number, $user_all) + 1;
     if($turn == 1){
-        $goal = 29;
+        $goal = 28;
         $position = 1;
     }
     else{
@@ -63,27 +63,30 @@
     $stmt = $pdo->prepare("SELECT * FROM boad_table WHERE id = :id");
     $stmt->bindValue(':id', $id, PDO:: PARAM_INT);
     $status = $stmt->execute();
-    $turn_value = $stmt->fetch(PDO::FETCH_ASSOC);
-    $text = $turn_value["text"];
-    //var_dump($turn_value);
+    $boad_table = $stmt->fetch(PDO::FETCH_ASSOC);
+    $text = $boad_table["text"];
+    //var_dump($boad_table);
     //echo '<br />';
-    //echo 'bonus=>'.$turn_value["bonus"].'<br />';
+    //echo 'bonus=>'.$boad_table["bonus"].'<br />';
     //echo 'text=>'.$text.'<br />';
 
     //user_table 更新
-    $position = $position + $dice + $turn_value["bonus"];
+    $position = $position + $dice + $boad_table["bonus"];
     if($position > 29){
         $position = 29;
     }
     //echo 'position=>'.$position.'<br />';
-    $stop_status = $turn_value["stop_status"];
+    $stop_status = $boad_table["stop_status"];
     //$stop_status = 0;
     //echo 'stop_status=>'.$stop_status.'<br />';
     if($dice == 0){
         $stop_status = 0;
     }
 
-    $goal = $goal - $dice - $turn_value["bonus"] - 1;
+    //echo "goal->".$goal."<br>";
+    //echo "dice->".$dice."<br>";
+    //echo "bonus->".$boad_table["bonus"]."<br>";
+    $goal = $goal - $dice - $boad_table["bonus"];
     if($goal < 0){
         $goal = 0;
     }
@@ -101,7 +104,7 @@
     //echo 'サイコロ振った数=>'.$count_number.'<br />';
     //echo '人数=>'.$user_all.'<br />';
     //echo 'ターン数=>'.$turn.'<br />';
-    $bonus = $turn_value["bonus"];
+    $bonus = $boad_table["bonus"];
     //echo 'position=>'.$position.'<br />';
     $stmt = $pdo->prepare("INSERT INTO game_table(id, turn, user_id, dice, bonus, position)VALUES(NULL, :turn, :user_id, :dice, :bonus, :position)");
     $stmt->bindValue(':turn', $turn, PDO:: PARAM_INT);
@@ -157,7 +160,12 @@
                 <tr><th>マス</th><th>内容</th></tr>
                 <?php
                     for($i=0;$i<29;$i++){
-                        echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                        if($i == $position - 1){
+                            echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                        }
+                        else{
+                            echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                        }
                     }
                 ?>
 
