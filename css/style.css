@@ -1,0 +1,23 @@
+main{
+    display: flex;
+}
+
+
+.left_main{
+    width: 50%;
+}
+.right_main{
+    width: 50%;
+    background-color: #fff;
+    border-left: solid 1px #c9c9c9;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 65%;
+    text-align: center;
+}
+table th, table td {
+    border: solid 1px black;
+}
+
