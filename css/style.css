@@ -56,3 +56,8 @@ table th, table td {
     margin-bottom: 20px;
     color: red;
 }
+
+.comment{
+    font-size: 60%;
+    padding-left: 10px;
+}

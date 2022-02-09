@@ -46,9 +46,9 @@
                             }
                         ?>
                     </select><br>
-                    <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><br>
-                    <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><br>
-                    <label>内容：<input type="text" name="text" class="text"></label><br>
+                    <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><span class="comment">※例：1＝1マス進む、-1：1マスもどる</span><br>
+                    <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><span class="comment">※例：1＝1回休み、0：通常通り</span><br>
+                    <label>内容：<input type="text" name="text" class="text"></label><span class="comment">※コメントを記入してください！</span><br>
                     <button type="submit">更新</button>
                 </form>
             </div>
@@ -64,9 +64,9 @@
                             }
                         ?>
                     </select><br>
-                    <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><br>
-                    <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><br>
-                    <label>内容：<input type="text" name="text" class="text"></label><br>
+                    <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><span class="comment">※例：1＝1マス進む、-1：1マスもどる</span><br>
+                    <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><span class="comment">※例：1＝1回休み、0：通常通り</span><br>
+                    <label>内容：<input type="text" name="text" class="text"></label><span class="comment">※コメントを記入してください！</span><br>
                     <button type="submit">追加</button>
                 </form>
             </div>
