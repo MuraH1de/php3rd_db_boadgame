@@ -5,10 +5,10 @@
 
 【ファイル概要】
 - ```index.php```  <br>
-    ⇒すごろくボードの設定を行う
-    　- ```edit_boad.php```  編集<br>
-      - ```insert_boad.php```  追加<br>
-      - ```delete_boad.php```  削除
+    ⇒すごろくボードの設定を行う<br>
+    　edit_boad.php  :  編集<br>
+      insert_boad.php  :  追加<br>
+      delete_boad.php  :  削除
 - ```number_select.php```  <br>
     ⇒遊ぶ人数を選択する
 - ```number_update.php```  <br>
