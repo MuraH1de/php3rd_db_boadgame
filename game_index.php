@@ -9,8 +9,11 @@
     //ゲームのボード取得
     $stmt = $pdo->prepare("SELECT * FROM boad_table");
     $status = $stmt->execute();
+    $boad_all=0;
     while($boad_table[] = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $boad_all += 1;
     }
+    //echo $boad_all;
 
     // サイコロを振った回数確認
     $stmt = $pdo->prepare("SELECT count(*) FROM game_table");
@@ -96,7 +99,7 @@
             <table class="game_table">
                 <tr><th>マス</th><th>内容</th></tr>
                 <?php
-                    for($i=0;$i<29;$i++){
+                    for($i=0;$i<$boad_all;$i++){
                         if($i == $position - 1){
                             echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
                         }

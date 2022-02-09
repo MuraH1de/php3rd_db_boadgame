@@ -13,9 +13,25 @@ main{
 }
 
 h2{
-    margin-top: 75px;
+    margin-top: 20px;
+    margin-bottom: 3px;
+}
+h3{
+    margin-top: 5px;
+    margin-bottom: 3px;
 }
 
+/* 編集画面 */
+.bonus{
+    width: 40px;
+}
+.stop_status{
+    width: 40px;
+    margin-left: 5px;
+}
+.next_button{
+    margin: 5px;
+}
 
 table {
     border-collapse: collapse;
@@ -32,5 +48,11 @@ table th, table td {
 
 #s_result{
     margin: 0 20px;
+    color: red;
+}
+
+.result{
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: red;
 }

@@ -9,6 +9,7 @@
 <body>
     <h2>名前を登録してください。</h2>
     <form method="POST" action="user_insert.php">
+        <!-- <input type="hidden" name="boad_all" value="<?php echo $boad_all; ?>"> -->
         <div class="register">
             <label>名前：<input type="text" name="name"></label>
             <input type="submit" value="送信">

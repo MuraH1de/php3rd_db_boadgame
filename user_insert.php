@@ -12,6 +12,14 @@
     }
 
 
+    $stmt = $pdo->prepare("SELECT * FROM boad_table");
+    $status = $stmt->execute();
+    $boad_all=0;
+    while($boad_table[] = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $boad_all += 1;
+    }
+
+
     //何人読み込むか確認する
     $stmt = $pdo->prepare("SELECT * FROM user_count");
     $status = $stmt->execute();
@@ -20,7 +28,7 @@
     //echo '<br />';
 
     // 1. SQL文を用意
-    $stmt = $pdo->prepare("INSERT INTO user_table(user_id, user_name, position, stop_status, goal)VALUES(NULL, :user_name, 1, 0, 28)");
+    $stmt = $pdo->prepare("INSERT INTO user_table(user_id, user_name, position, stop_status, goal)VALUES(NULL, :user_name, 1, 0, $boad_all-1)");
 
     //  2. バインド変数を用意
     $stmt->bindValue(':user_name', $name, PDO:: PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)

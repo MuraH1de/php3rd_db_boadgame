@@ -12,7 +12,9 @@
     //ゲームのボード取得
     $stmt = $pdo->prepare("SELECT * FROM boad_table");
     $status = $stmt->execute();
+    $boad_all=0;
     while($boad_table[] = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $boad_all += 1;
     }
 
     // サイコロの投げた数確認
@@ -45,7 +47,7 @@
     //何ターン目か確認
     $turn = intdiv($count_number, $user_all) + 1;
     if($turn == 1){
-        $goal = 28;
+        $goal = $boad_all-1;
         $position = 1;
     }
     else{
@@ -57,26 +59,26 @@
 
     //行先を確認する
     $id = $position + $dice;
-    if($id > 29){
-        $id = 29;
+    if($id > $boad_all){
+        $id = $boad_all;
     }
     $stmt = $pdo->prepare("SELECT * FROM boad_table WHERE id = :id");
     $stmt->bindValue(':id', $id, PDO:: PARAM_INT);
     $status = $stmt->execute();
-    $boad_table = $stmt->fetch(PDO::FETCH_ASSOC);
-    $text = $boad_table["text"];
-    //var_dump($boad_table);
+    $target_table = $stmt->fetch(PDO::FETCH_ASSOC);
+    $text = $target_table["text"];
+    //var_dump($target_table);
     //echo '<br />';
-    //echo 'bonus=>'.$boad_table["bonus"].'<br />';
+    //echo 'bonus=>'.$target_table["bonus"].'<br />';
     //echo 'text=>'.$text.'<br />';
 
     //user_table 更新
-    $position = $position + $dice + $boad_table["bonus"];
-    if($position > 29){
-        $position = 29;
+    $position = $position + $dice + $target_table["bonus"];
+    if($position > $boad_all){
+        $position = $boad_all;
     }
     //echo 'position=>'.$position.'<br />';
-    $stop_status = $boad_table["stop_status"];
+    $stop_status = $target_table["stop_status"];
     //$stop_status = 0;
     //echo 'stop_status=>'.$stop_status.'<br />';
     if($dice == 0){
@@ -85,8 +87,8 @@
 
     //echo "goal->".$goal."<br>";
     //echo "dice->".$dice."<br>";
-    //echo "bonus->".$boad_table["bonus"]."<br>";
-    $goal = $goal - $dice - $boad_table["bonus"];
+    //echo "bonus->".$target_table["bonus"]."<br>";
+    $goal = $goal - $dice - $target_table["bonus"];
     if($goal < 0){
         $goal = 0;
     }
@@ -104,7 +106,7 @@
     //echo 'サイコロ振った数=>'.$count_number.'<br />';
     //echo '人数=>'.$user_all.'<br />';
     //echo 'ターン数=>'.$turn.'<br />';
-    $bonus = $boad_table["bonus"];
+    $bonus = $target_table["bonus"];
     //echo 'position=>'.$position.'<br />';
     $stmt = $pdo->prepare("INSERT INTO game_table(id, turn, user_id, dice, bonus, position)VALUES(NULL, :turn, :user_id, :dice, :bonus, :position)");
     $stmt->bindValue(':turn', $turn, PDO:: PARAM_INT);
@@ -145,10 +147,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <main>
         <div class="left_main">
-
             <h1>すごろく</h1>
             <h2>サイコロの目は<?= $dice; ?>だったよ。</h2>
-            <h2><?= $text; ?></h2>
+            <h2 class="result"><?= $text; ?></h2>
             <h3><?= $position; ?>番目のマスに止まっているよ。</h3>
             <h3>ゴールまで、あと<?= $goal; ?>マスだよ。</h3>
             
@@ -159,7 +160,7 @@
             <table class="game_table">
                 <tr><th>マス</th><th>内容</th></tr>
                 <?php
-                    for($i=0;$i<29;$i++){
+                    for($i=0;$i<$boad_all;$i++){
                         if($i == $position - 1){
                             echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
                         }
