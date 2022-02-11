@@ -66,7 +66,7 @@
                                 echo "<option value='{$n}'>{$n}</option>";
                             }
                         ?>
-                    </select>列目に追加します。</h3>
+                    </select> 列目に追加します。</h3>
                     <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><span class="comment">※例：1＝1マス進む、-1：1マスもどる</span><br>
                     <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><span class="comment">※例：1＝1回休み、0：通常通り</span><br>
                     <label>内容：<input type="text" name="text" class="text"></label><span class="comment">※コメントを記入してください！</span><br>
@@ -85,7 +85,7 @@
                                 echo "<option value='{$n}'>{$n}</option>";
                             }
                         ?>
-                    </select>列目を削除します。</h3>
+                    </select> 列目を削除します。</h3>
                     <button type="submit">削除</button>
                 </form>
             </div>
