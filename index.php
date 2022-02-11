@@ -38,16 +38,16 @@
             <h2>すごろくボードの編集をしてください。</h2>
 
             <div class="edit">
-                <h3>編集</h3>
+                <!-- <h3>編集</h3> -->
                 <form method="POST" action="edit_boad.php">
-                    <select name="number">
+                    <h3><select name="number">
                         <option value="">-</option>
                         <?php 
                             for($n=1;$n<=$boad_all;$n++){
                                 echo "<option value='{$n}'>{$n}</option>";
                             }
                         ?>
-                    </select><br>
+                    </select> 列目を編集します。</h3>
                     <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><span class="comment">※例：1＝1マス進む、-1：1マスもどる</span><br>
                     <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><span class="comment">※例：1＝1回休み、0：通常通り</span><br>
                     <label>内容：<input type="text" name="text" class="text"></label><span class="comment">※コメントを記入してください！</span><br>
@@ -56,8 +56,9 @@
             </div>
 
             <div class="insert">
-                <h3>追加</h3>
+                <!-- <h3>追加</h3> -->
                 <form method="POST" action="insert_boad.php">
+                    <h3>
                     <select name="number">
                         <option value="">-</option>
                         <?php 
@@ -65,7 +66,7 @@
                                 echo "<option value='{$n}'>{$n}</option>";
                             }
                         ?>
-                    </select><br>
+                    </select>列目に追加します。</h3>
                     <label>ボーナス：<input type="text" name="bonus" class="bonus"></label><span class="comment">※例：1＝1マス進む、-1：1マスもどる</span><br>
                     <label>1回休み：<input type="text" name="stop_status" class="stop_status"></label><span class="comment">※例：1＝1回休み、0：通常通り</span><br>
                     <label>内容：<input type="text" name="text" class="text"></label><span class="comment">※コメントを記入してください！</span><br>
@@ -74,8 +75,9 @@
             </div>
 
             <div class="delete">
-                <h3>削除</h3>
+                <!-- <h3>削除</h3> -->
                 <form method="GET" action="delete_boad.php">
+                    <h3>
                     <select name="number">
                         <option value="">-</option>
                         <?php 
@@ -83,7 +85,7 @@
                                 echo "<option value='{$n}'>{$n}</option>";
                             }
                         ?>
-                    </select>
+                    </select>列目を削除します。</h3>
                     <button type="submit">削除</button>
                 </form>
             </div>

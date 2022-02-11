@@ -12,13 +12,45 @@ main{
     border-left: solid 1px #c9c9c9;
 }
 
+h1{
+    margin: 10px 0;
+    margin-left: 20px;
+}
 h2{
     margin-top: 20px;
     margin-bottom: 3px;
+    margin-left: 20px;
 }
 h3{
     margin-top: 5px;
     margin-bottom: 3px;
+    margin-left: 20px;
+    font-size: 17px;
+}
+
+.edit{
+    background-color: #afeeee;
+    margin: 0 20px;
+    padding: 0 0 3px 10px;
+}
+.edit h3{
+    margin-left: 0;
+}
+.insert{
+    background-color: #fffacd;
+    margin: 0 20px;
+    padding: 0 0 3px 10px;
+}
+.insert h3{
+    margin-left: 0;
+}
+.delete{
+    background-color: #ffb6c1;
+    margin: 0 20px;
+    padding: 0 0 3px 10px;
+}
+.delete h3{
+    margin-left: 0;
 }
 
 /* 編集画面 */
@@ -30,12 +62,18 @@ h3{
     margin-left: 5px;
 }
 .next_button{
-    margin: 5px;
+    margin: 20px;
 }
 .initial_button{
-    margin: 50px 5px 5px 0px;
+    margin: 50px 5px 5px 20px;
     font-weight: bold;
 }
+
+.select_number{
+    margin-left: 20px;
+}
+
+
 
 
 .board_button{
@@ -86,3 +124,10 @@ table th, table td {
     font-size: 60%;
     padding-left: 10px;
 }
+
+#saikoro{
+    margin-left: 20px;
+}
+/* #next{
+    margin-left: 20px;
+} */

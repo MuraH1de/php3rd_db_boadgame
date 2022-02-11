@@ -153,7 +153,7 @@
             <h3><?= $position; ?>番目のマスに止まっているよ。</h3>
             <h3>ゴールまで、あと<?= $goal; ?>マスだよ。</h3>
             
-            <button type ="button" onclick="location.href='game_index.php'">次の人へ</button><br>
+            <button type ="button" onclick="location.href='game_index.php'" class="next_button">次の人へ</button><br>
 
             <button onclick="location.href='./index.php'" class="initial_button">はじめにもどる</button>
         </div>
