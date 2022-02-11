@@ -153,20 +153,62 @@
             <h3><?= $position; ?>番目のマスに止まっているよ。</h3>
             <h3>ゴールまで、あと<?= $goal; ?>マスだよ。</h3>
             
-            <button type ="button" onclick="location.href='game_index.php'">次の人へ</button>
+            <button type ="button" onclick="location.href='game_index.php'">次の人へ</button><br>
+
+            <button onclick="location.href='./index.php'" class="initial_button">はじめにもどる</button>
         </div>
 
         <div class="right_main">
             <table class="game_table">
-                <tr><th>マス</th><th>内容</th></tr>
+                <!-- <tr><th>マス</th><th>内容</th></tr> -->
                 <?php
+                    $table_header = '<tr><th>マス</th><th>内容</th>';
+                    //var_dump($user_table);
+                    for($u=0;$u<$user_all;$u++){
+                        //echo '$u->'.$u.'user_name'.$user_table[$u]["user_name"].'<br>';
+
+                        $table_header = $table_header.'<th>'.$user_table[$u]["user_name"].'</th>';
+                    }
+                    $table_header = $table_header.'</tr>';
+                    echo $table_header;
+
+                    $line = "";
                     for($i=0;$i<$boad_all;$i++){
+                        //echo  '$i->'.$i.'<br>';
                         if($i == $position - 1){
-                            echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                            //echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td><td></td><td></td></tr>";
+                            $line = "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td>";
                         }
                         else{
-                            echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                            //echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td><td></td><td></td></tr>";
+                            $line = "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td>";
                         }
+
+                        for($u=0;$u<$user_all;$u++){
+                        //echo  '$u->'.$u.'<br>';
+                        //echo  '$user_id->'.$user_id.'<br>';
+                        //echo  '$position->'.$position.'<br>';
+                        //echo  '$user_table[$u]["position"]->'.$user_table[$u]["position"].'<br>';
+
+                            if($user_id-1 == $u){
+                                if($i == $position-1){
+                                    $line = $line."<td>●</td>";
+                                }
+                                else{
+                                    $line = $line."<td></td>";
+                                }
+                            }
+                            else{
+                                if($i == $user_table[$u]["position"]-1){
+                                    $line = $line."<td>●</td>";
+                                }
+                                else{
+                                    $line = $line."<td></td>";
+                                }
+                            }
+                        }
+                        
+                        echo $line."</tr>";
                     }
                 ?>
 

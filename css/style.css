@@ -4,10 +4,10 @@ main{
 
 
 .left_main{
-    width: 50%;
+    width: 40%;
 }
 .right_main{
-    width: 50%;
+    width: 60%;
     background-color: #fff;
     border-left: solid 1px #c9c9c9;
 }
@@ -32,11 +32,22 @@ h3{
 .next_button{
     margin: 5px;
 }
+.initial_button{
+    margin: 50px 5px 5px 0px;
+    font-weight: bold;
+}
+
+
+.board_button{
+    height: 25px;
+}
 
 table {
+    margin-top: 10px;
     border-collapse: collapse;
-    font-size: 65%;
+    font-size: 60%;
     text-align: center;
+    width: 300px;
 }
 table th, table td {
     border: solid 1px black;
@@ -45,6 +56,20 @@ table th, table td {
     background-color: #ff8c00;
     font-weight: 800;
 }
+.img_2d{
+    display: none;
+    width: 80%;
+    height: auto;
+    margin-top: 50px;
+}
+.img_3d{
+    display: none;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+}
+
+
 
 #s_result{
     margin: 0 20px;

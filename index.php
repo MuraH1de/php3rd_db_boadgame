@@ -29,6 +29,8 @@
 </head>
 <body>
 <main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <div class="left_main">
         <h1>すごろく作成！</h1>
 
@@ -93,6 +95,10 @@
     </div>
 
     <div class="right_main">
+        <button class="board_button" id="button_table">表</button>
+        <button class="board_button" id="button_2d">2D-MAP</button>
+        <button class="board_button" id="button_3d">3D-MAP</button>
+
         <table class="game_table">
             <tr><th>マス</th><th>内容</th></tr>
             <?php
@@ -102,7 +108,28 @@
             ?>
 
         </table>
+        <img src="img\2d_board.png" class="img_2d">
+        <img src="img\3d_board.png" class="img_3d">
     </div>
 </main>
+
+<script>
+    $("#button_table").on("click",function(){
+        $(".game_table").show();
+        $(".img_2d").hide();
+        $(".img_3d").hide();
+    })
+    $("#button_2d").on("click",function(){
+        $(".game_table").hide();
+        $(".img_2d").show();
+        $(".img_3d").hide();
+    })
+    $("#button_3d").on("click",function(){
+        $(".game_table").hide();
+        $(".img_2d").hide();
+        $(".img_3d").show();
+    })
+</script>
+
 </body>
 </html>

@@ -93,20 +93,45 @@
 
                 <button id="next" type="submit">すごろくの行き先を見る</button>
             </form>
+
+            <button onclick="location.href='./index.php'" class="initial_button">はじめにもどる</button>
         </div>
 
         <div class="right_main">
             <table class="game_table">
-                <tr><th>マス</th><th>内容</th></tr>
+                <!-- <tr><th>マス</th><th>内容</th></tr> -->
                 <?php
+                    $table_header = '<tr><th>マス</th><th>内容</th>';
+                    //var_dump($user_table);
+                    for($u=0;$u<$user_all;$u++){
+                        //echo '$u->'.$u.'user_name'.$user_table[$u]["user_name"].'<br>';
+
+                        $table_header = $table_header.'<th>'.$user_table[$u]["user_name"].'</th>';
+                    }
+                    $table_header = $table_header.'</tr>';
+                    echo $table_header;
+
+                    $line = "";
                     for($i=0;$i<$boad_all;$i++){
                         if($i == $position - 1){
-                            echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                            //echo "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td><td></td><td></td></tr>";
+                            $line = "<tr class='table_config'><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td>";
                         }
                         else{
-                            echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td></tr>";
+                            //echo "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td><td></td><td></td></tr>";
+                            $line = "<tr><td>{$boad_table[$i]["id"]}</td><td>{$boad_table[$i]["text"]}</td>";
+                        }
+
+                        for($u=0;$u<$user_all;$u++){
+                            if($i == $user_table[$u]["position"]-1){
+                                $line = $line."<td>●</td>";
+                            }
+                            else{
+                                $line = $line."<td></td>";
+                            }
                         }
                         
+                        echo $line."</tr>";
                     }
                 ?>
 
